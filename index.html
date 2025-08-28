@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Медицинский консультант - Подбор лекарств по симптомам</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1><i class="fas fa-heartbeat"></i> Медицинский консультант</h1>
+            <p>Подбор лекарств по симптомам</p>
+            <button id="themeToggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Вкладки для переключения между разделами -->
+        <div class="tabs">
+            <button class="tab active" data-tab="symptoms">Подбор лекарств</button>
+            <button class="tab" data-tab="knowledge">База знаний</button>
+            <button class="tab" data-tab="tools">Инструменты</button>
+            <button class="tab" data-tab="references">Справочники</button>
+        </div>
+        
+        <!-- Содержимое вкладок -->
+        <div class="tab-content">
+            <!-- Основной раздел подбора лекарств -->
+            <section id="symptoms-tab" class="tab-pane active">
+                <section class="symptom-selector">
+                    <h2>Выберите симптомы</h2>
+                    
+                    <!-- Поиск по симптомам -->
+                    <div class="search-container">
+                        <input type="text" id="symptomSearch" placeholder="Поиск по симптомам...">
+                        <button id="clearSearch"><i class="fas fa-times"></i></button>
+                    </div>
+                    
+                    <!-- Фильтры по возрасту и противопоказаниям -->
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label for="age">Возраст:</label>
+                            <select id="age">
+                                <option value="adult">Взрослый (18+)</option>
+                                <option value="teen">Подросток (12-17)</option>
+                                <option value="child">Ребенок (2-11)</option>
+                                <option value="infant">Младенец (0-1)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Противопоказания:</label>
+                            <div class="contraindications">
+                                <label><input type="checkbox" id="pregnancy"> Беременность</label>
+                                <label><input type="checkbox" id="lactation"> Лактация</label>
+                                <label><input type="checkbox" id="hypertension"> Гипертония</label>
+                                <label><input type="checkbox" id="diabetes"> Диабет</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="symptom-categories">
+                <div class="category">
+                    <h3><i class="fas fa-head-side-virus"></i> Голова, горло, нос и уши</h3>
+                    <div class="symptoms">
+                        <label><input type="checkbox" value="головная боль"> Головная боль</label>
+                        <label><input type="checkbox" value="головокружение"> Головокружение</label>
+                        <label><input type="checkbox" value="боль в горле"> Боль в горле</label>
+                        <label><input type="checkbox" value="насморк"> Насморк</label>
+                        <label><input type="checkbox" value="заложенность носа"> Заложенность носа</label>
+                        <label><input type="checkbox" value="першение в горле"> Першение в горле</label>
+                        <label><input type="checkbox" value="боль в ухе"> Боль в ухе</label>
+                        <label><input type="checkbox" value="воспаление уха"> Воспаление уха</label>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3><i class="fas fa-lungs"></i> Респираторные и глазные</h3>
+                    <div class="symptoms">
+                        <label><input type="checkbox" value="кашель"> Кашель</label>
+                        <label><input type="checkbox" value="одышка"> Одышка</label>
+                        <label><input type="checkbox" value="боль в груди"> Боль в груди</label>
+                        <label><input type="checkbox" value="мокрота"> Мокрота</label>
+                        <label><input type="checkbox" value="воспаление дыхательных путей"> Воспаление дыхательных путей</label>
+                        <label><input type="checkbox" value="ангины"> Ангины</label>
+                        <label><input type="checkbox" value="конъюнктивит"> Конъюнктивит</label>
+                        <label><input type="checkbox" value="кератит"> Кератит</label>
+                        <label><input type="checkbox" value="боль в глазах"> Боль в глазах</label>
+                        <label><input type="checkbox" value="покраснение глаз"> Покраснение глаз</label>
+                        <label><input type="checkbox" value="зуд в глазах"> Зуд в глазах</label>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3><i class="fas fa-temperature-high"></i> Температура, инфекции и общее</h3>
+                    <div class="symptoms">
+                        <label><input type="checkbox" value="температура"> Температура</label>
+                        <label><input type="checkbox" value="озноб"> Озноб</label>
+                        <label><input type="checkbox" value="слабость"> Слабость</label>
+                        <label><input type="checkbox" value="усталость"> Усталость</label>
+                        <label><input type="checkbox" value="потеря аппетита"> Потеря аппетита</label>
+                        <label><input type="checkbox" value="инфекции дыхательных путей"> Инфекции дыхательных путей</label>
+                        <label><input type="checkbox" value="герпес"> Герпес</label>
+                        <label><input type="checkbox" value="простуда"> Простуда</label>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3><i class="fas fa-stomach"></i> Желудок, кишечник и пищеварение</h3>
+                    <div class="symptoms">
+                        <label><input type="checkbox" value="тошнота"> Тошнота</label>
+                        <label><input type="checkbox" value="рвота"> Рвота</label>
+                        <label><input type="checkbox" value="диарея"> Диарея</label>
+                        <label><input type="checkbox" value="запор"> Запор</label>
+                        <label><input type="checkbox" value="боль в животе"> Боль в животе</label>
+                        <label><input type="checkbox" value="вздутие живота"> Вздутие живота</label>
+                        <label><input type="checkbox" value="дисбактериоз"> Дисбактериоз</label>
+                        <label><input type="checkbox" value="изжога"> Изжога</label>
+                        <label><input type="checkbox" value="боль в желудке"> Боль в желудке</label>
+                        <label><input type="checkbox" value="подготовка к операции"> Подготовка к операции</label>
+                    </div>
+                </div>
+
+                <div class="category">
+                    <h3><i class="fas fa-allergies"></i> Аллергия, кожа и мускулатура</h3>
+                    <div class="symptoms">
+                        <label><input type="checkbox" value="сыпь"> Сыпь</label>
+                        <label><input type="checkbox" value="зуд"> Зуд</label>
+                        <label><input type="checkbox" value="покраснение кожи"> Покраснение кожи</label>
+                        <label><input type="checkbox" value="отек"> Отек</label>
+                        <label><input type="checkbox" value="боль в мышцах"> Боль в мышцах</label>
+                        <label><input type="checkbox" value="боль в суставах"> Боль в суставах</label>
+                        <label><input type="checkbox" value="воспаление"> Воспаление</label>
+                        <label><input type="checkbox" value="травмы"> Травмы</label>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="checkBtn" class="check-btn">
+                <i class="fas fa-search"></i> Подобрать лекарства
+            </button>
+        </section>
+        </section> <!-- Закрытие tab-pane -->
+
+        <!-- Вкладка "База знаний" -->
+        <section id="knowledge-tab" class="tab-pane" style="display: none;">
+            <h2>База знаний</h2>
+            
+            <div class="knowledge-categories">
+                <div class="knowledge-category">
+                    <h3><i class="fas fa-book-medical"></i> Заболевания и симптомы</h3>
+                    <div class="knowledge-items">
+                        <div class="knowledge-item">
+                            <h4>Грипп</h4>
+                            <p>Острое вирусное заболевание дыхательных путей, характеризующееся лихорадкой, ознобом, головной болью, миалгией, слабостью и кашлем.</p>
+                            <button class="read-more-btn" data-topic="грипп">Подробнее</button>
+                        </div>
+                        
+                        <div class="knowledge-item">
+                            <h4>ОРВИ</h4>
+                            <p>Острая респираторная вирусная инфекция - группа заболеваний, вызванных различными вирусами, поражающими верхние дыхательные пути.</p>
+                            <button class="read-more-btn" data-topic="орви">Подробнее</button>
+                        </div>
+                        
+                        <div class="knowledge-item">
+                            <h4>Аллергия</h4>
+                            <p>Повышенная чувствительность организма к определенным веществам (аллергенам), проявляющаяся различными симптомами.</p>
+                            <button class="read-more-btn" data-topic="аллергия">Подробнее</button>
+                        </div>
+                        
+                        <div class="knowledge-item">
+                            <h4>Гастрит</h4>
+                            <p>Воспалительное заболевание слизистой оболочки желудка, которое может быть острым или хроническим.</p>
+                            <button class="read-more-btn" data-topic="гастрит">Подробнее</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="knowledge-category">
+                    <h3><i class="fas fa-question-circle"></i> Часто задаваемые вопросы</h3>
+                    <div class="faq-items">
+                        <div class="faq-item">
+                            <h4>Как правильно принимать антибиотики?</h4>
+                            <p>Антибиотики следует принимать строго по назначению врача, в указанной дозировке и в течение всего курса лечения, даже если симптомы исчезли.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h4>Можно ли пить алкоголь во время приема лекарств?</h4>
+                            <p>Алкоголь может взаимодействовать с许多 лекарствами, усиливая или ослабляя их действие. Лучше воздержаться от алкоголя во время лечения.</p>
+                        </div>
+                        
+                        <div class="faq-item">
+                            <h4>Как хранить лекарства правильно?</h4>
+                            <p>Большинство лекарств следует хранить в сухом, прохладном месте, вдали от прямых солнечных лучей и недоступно для детей.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Вкладка "Инструменты" -->
+        <section id="tools-tab" class="tab-pane" style="display: none;">
+            <h2>Интерактивные инструменты</h2>
+            
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3><i class="fas fa-calculator"></i> Калькулятор дозировок</h3>
+                    <p>Рассчитайте правильную дозу лекарства для ребенка на основе веса и возраста.</p>
+                    <button class="tool-btn" data-tool="dosage">Открыть калькулятор</button>
+                </div>
+                
+                <div class="tool-card">
+                    <h3><i class="fas fa-weight"></i> Калькулятор ИМТ</h3>
+                    <p>Определите свой индекс массы тела и узнайте, соответствует ли он норме.</p>
+                    <button class="tool-btn" data-tool="bmi">Открыть калькулятор</button>
+                </div>
+                
+                <div class="tool-card">
+                    <h3><i class="fas fa-heartbeat"></i> Измерение артериального давления</h3>
+                    <p>Запишите и отслеживайте свои показания артериального давления.</p>
+                    <button class="tool-btn" data-tool="bp">Открыть трекер</button>
+                </div>
+                
+                <div class="tool-card">
+                    <h3><i class="fas fa-thermometer-half"></i> Трекер температуры</h3>
+                    <p>Ведите журнал изменений температуры тела.</p>
+                    <button class="tool-btn" data-tool="temp">Открыть трекер</button>
+                </div>
+            </div>
+            
+            <!-- Модальное окно для инструментов -->
+            <div id="toolModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close-modal">&times;</span>
+                    <div id="toolContent">
+                        <!-- Содержимое инструмента будет загружено сюда -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Вкладка "Справочники" -->
+        <section id="references-tab" class="tab-pane" style="display: none;">
+            <h2>Медицинские справочники</h2>
+            
+            <div class="references-grid">
+                <div class="reference-category">
+                    <h3><i class="fas fa-pills"></i> Лекарственные препараты</h3>
+                    <div class="reference-items">
+                        <div class="reference-item">
+                            <h4>Анальгетики</h4>
+                            <p>Препараты, устраняющие или уменьшающие болевые ощущения.</p>
+                            <button class="reference-btn" data-ref="analgesics">Просмотреть</button>
+                        </div>
+                        
+                        <div class="reference-item">
+                            <h4>Антибиотики</h4>
+                            <p>Лекарственные средства, применяемые для лечения бактериальных инфекций.</p>
+                            <button class="reference-btn" data-ref="antibiotics">Просмотреть</button>
+                        </div>
+                        
+                        <div class="reference-item">
+                            <h4>Антигистамины</h4>
+                            <p>Препараты, блокирующие действие гистамина и применяемые при аллергических реакциях.</p>
+                            <button class="reference-btn" data-ref="antihistamines">Просмотреть</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="reference-category">
+                    <h3><i class="fas fa-dna"></i> Анатомия человека</h3>
+                    <div class="reference-items">
+                        <div class="reference-item">
+                            <h4>Сердечно-сосудистая система</h4>
+                            <p>Система органов, обеспечивающая circulation крови по организму.</p>
+                            <button class="reference-btn" data-ref="cardiovascular">Просмотреть</button>
+                        </div>
+                        
+                        <div class="reference-item">
+                            <h4>Дыхательная система</h4>
+                            <p>Система органов, обеспечивающая газообмен между организмом и окружающей средой.</p>
+                            <button class="reference-btn" data-ref="respiratory">Просмотреть</button>
+                        </div>
+                        
+                        <div class="reference-item">
+                            <h4>Пищеварительная система</h4>
+                            <p>Система органов, обеспечивающая механическую и химическую переработку пищи.</p>
+                            <button class="reference-btn" data-ref="digestive">Просмотреть</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Раздел результатов подбора лекарств -->
+    <section class="results" id="results">
+        <div class="results-header">
+            <h2>Рекомендуемые лекарства</h2>
+            <div class="view-toggle">
+                <button id="medicinesView" class="active">Лекарства</button>
+                <button id="symptomsView">Симптомы</button>
+            </div>
+        </div>
+        
+        <div id="medicinesList" class="medicines-list">
+            <!-- Результаты будут отображаться здесь -->
+        </div>
+        
+        <div id="symptomsList" class="symptoms-list" style="display: none;">
+            <h3>Какие симптомы лечат эти лекарства:</h3>
+            <div id="symptomsMedicinesList" class="symptoms-medicines-list">
+                <!-- Результаты будут отображаться здесь -->
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            <p><i class="fas fa-exclamation-triangle"></i> <strong>Важно:</strong> Этот сервис не заменяет консультацию врача. Перед применением любых лекарственных средств проконсультируйтесь с врачом или фармацевтом.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Медицинский консультант. Все права защищены.</p>
+            <p>Информация предоставлена только в справочных целях.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

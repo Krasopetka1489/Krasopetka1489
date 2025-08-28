@@ -1,0 +1,912 @@
+/* styles.css */
+
+/* Общие стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f0f8ff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Шапка */
+header {
+    background: linear-gradient(135deg, #1e90ff, #00bfff);
+    color: white;
+    padding: 2rem 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header .theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+header .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+header h1 i {
+    margin-right: 10px;
+}
+
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* Основное содержимое */
+main {
+    padding: 2rem 0;
+}
+
+/* Вкладки */
+.tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+    padding-bottom: 1rem;
+}
+
+.tab {
+    padding: 0.75rem 1.5rem;
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 5px 5px 0 0;
+    cursor: pointer;
+    font-weight: 600;
+    color: #495057;
+    transition: all 0.3s;
+}
+
+.tab:hover {
+    background: #e9ecef;
+}
+
+.tab.active {
+    background: #1e90ff;
+    color: white;
+    border-color: #1e90ff;
+}
+
+/* Содержимое вкладок */
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: block;
+}
+
+/* Секция выбора симптомов */
+.symptom-selector {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 2rem;
+}
+
+.symptom-selector h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #1e90ff;
+    font-size: 1.8rem;
+}
+
+/* Поиск по симптомам */
+.search-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+.search-container input:focus {
+    outline: none;
+    border-color: #1e90ff;
+}
+
+.search-container button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+}
+
+/* Фильтры */
+.filters {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-group {
+    margin-bottom: 1rem;
+}
+
+.filter-group:last-child {
+    margin-bottom: 0;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.filter-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.contraindications {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.5rem;
+}
+
+.contraindications label {
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+}
+
+.contraindications input {
+    margin-right: 0.5rem;
+}
+
+/* Переключатель режимов просмотра */
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.view-toggle {
+    display: flex;
+    background: #e9ecef;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.view-toggle button {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.view-toggle button.active {
+    background: #1e90ff;
+    color: white;
+    border-radius: 25px;
+}
+
+/* Список симптомов и лекарств */
+.symptoms-list h3 {
+    margin-bottom: 1rem;
+    color: #1e90ff;
+}
+
+.symptoms-medicines-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.symptom-medicine-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+}
+
+.symptom-medicine-card h4 {
+    color: #007bff;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.symptom-medicine-card h4 i {
+    margin-right: 10px;
+}
+
+.symptom-medicine-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.symptom-medicine-card li {
+    padding: 0.25rem 0;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    align-items: center;
+}
+
+.symptom-medicine-card li:last-child {
+    border-bottom: none;
+}
+
+.mini-image {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 4px;
+}
+
+/* Темная тема */
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-theme .symptom-selector,
+body.dark-theme .results,
+body.dark-theme .category,
+body.dark-theme .medicine-card,
+body.dark-theme .symptom-medicine-card {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border-color: #333;
+}
+
+body.dark-theme .filters {
+    background-color: #1e1e1e;
+}
+
+body.dark-theme .search-container input {
+    background-color: #2d2d2d;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark-theme .search-container button {
+    color: #aaa;
+}
+
+body.dark-theme .filter-group select {
+    background-color: #2d2d2d;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+body.dark-theme .disclaimer {
+    background: #333300;
+    border-color: #666600;
+    color: #ffff99;
+}
+
+body.dark-theme .disclaimer strong {
+    color: #ffff99;
+}
+
+body.dark-theme header {
+    background: linear-gradient(135deg, #0d47a1, #01579b);
+}
+
+body.dark-theme .check-btn {
+    background: linear-gradient(135deg, #1b5e20, #00695c);
+}
+
+body.dark-theme .view-toggle {
+    background: #2d2d2d;
+}
+
+body.dark-theme .view-toggle button.active {
+    background: #0d47a1;
+}
+
+.symptom-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.category {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.2rem;
+    border: 1px solid #e9ecef;
+}
+
+.category h3 {
+    margin-bottom: 1rem;
+    color: #007bff;
+    display: flex;
+    align-items: center;
+}
+
+.category h3 i {
+    margin-right: 10px;
+}
+
+.symptoms {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.symptoms label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.symptoms label:hover {
+    background-color: #e3f2fd;
+}
+
+.symptoms input[type="checkbox"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.check-btn {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 2rem auto 0;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(40, 167, 69, 0.3);
+}
+
+.check-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(40, 167, 69, 0.4);
+}
+
+.check-btn:active {
+    transform: translateY(0);
+}
+
+/* Результаты */
+.results {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    display: none;
+}
+
+.results h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #1e90ff;
+    font-size: 1.8rem;
+}
+
+.medicines-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.medicine-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.medicine-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.medicine-card .medicine-image {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.medicine-card .medicine-image img {
+    max-width: 100%;
+    max-height: 150px;
+    object-fit: contain;
+    border-radius: 4px;
+}
+
+.medicine-card h3 {
+    color: #007bff;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.medicine-card h3 i {
+    margin-right: 10px;
+    color: #28a745;
+}
+
+.medicine-card .price {
+    color: #28a745;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.medicine-card .description {
+    margin: 0.5rem 0;
+    color: #666;
+}
+
+.medicine-card .symptoms {
+    font-style: italic;
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+.details-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.details-btn:hover {
+    background-color: #0d47a1;
+}
+
+/* Темная тема для кнопки "Подробнее" */
+body.dark-theme .details-btn {
+    background-color: #0d47a1;
+}
+
+body.dark-theme .details-btn:hover {
+    background-color: #1e90ff;
+}
+
+.disclaimer {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    color: #856404;
+}
+
+.disclaimer i {
+    margin-right: 5px;
+}
+
+.disclaimer strong {
+    color: #856404;
+}
+
+/* Подвал */
+footer {
+    background: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
+
+/* Модальное окно */
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.modal-content h2 {
+    color: #1e90ff;
+    margin-top: 0;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+}
+
+.modal-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.modal-image {
+    flex: 1;
+    min-width: 200px;
+}
+
+.modal-image img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.modal-info {
+    flex: 2;
+    min-width: 300px;
+}
+
+.modal-info p {
+    margin-bottom: 0.75rem;
+}
+
+/* Темная тема для модального окна */
+body.dark-theme .modal-content {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+}
+
+body.dark-theme .close {
+    color: #aaa;
+}
+
+body.dark-theme .close:hover,
+body.dark-theme .close:focus {
+    color: #fff;
+}
+
+/* База знаний */
+.knowledge-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.knowledge-category {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.knowledge-category h3 {
+    color: #1e90ff;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.knowledge-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.knowledge-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.knowledge-item h4 {
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+.read-more-btn {
+    background: #1e90ff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.read-more-btn:hover {
+    background: #0d47a1;
+}
+
+/* Инструменты */
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.tool-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+}
+
+.tool-card h3 {
+    color: #1e90ff;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tool-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.tool-btn:hover {
+    background: #1e7e34;
+}
+
+/* Модальное окно для инструментов */
+#toolModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    display: none;
+}
+
+#toolModal.show {
+    display: flex;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 10px;
+    padding: 2rem;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.close-modal:hover {
+    color: #000;
+}
+
+/* Справочники */
+.references-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.reference-category {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.reference-category h3 {
+    color: #1e90ff;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.reference-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.reference-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.reference-item h4 {
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+.reference-btn {
+    background: #6f42c1;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+.reference-btn:hover {
+    background: #5a32a3;
+}
+
+/* FAQ */
+.faq-items {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.faq-item {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.faq-item h4 {
+    color: #007bff;
+    margin-bottom: 0.5rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .symptom-selector, .results {
+        padding: 1.5rem;
+    }
+    
+    .symptom-categories {
+        grid-template-columns: 1fr;
+    }
+    
+    .category {
+        padding: 1rem;
+    }
+    
+    .tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab {
+        flex: 1 0 auto;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+    }
+    
+    header {
+        padding: 1.5rem 0;
+    }
+    
+    header h1 {
+        font-size: 1.7rem;
+    }
+    
+    .symptom-selector, .results {
+        padding: 1rem;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 1rem;
+    }
+}
